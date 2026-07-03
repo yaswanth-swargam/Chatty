@@ -1,0 +1,57 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  authUser: null,
+  isSigningUp: false,
+  isLoggingIn: false,
+  isUpdatingProfile: false,
+  isCheckingAuth: true,
+  onlineUsers: [],
+  socket: null,
+};
+
+const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    setAuthUser: (state, action) => {
+      state.authUser = action.payload;
+    },
+
+    setCheckingAuth: (state, action) => {
+      state.isCheckingAuth = action.payload;
+    },
+
+    setSigningUp: (state, action) => {
+      state.isSigningUp = action.payload;
+    },
+
+    setLoggingIn: (state, action) => {
+      state.isLoggingIn = action.payload;
+    },
+
+    setUpdatingProfile: (state, action) => {
+      state.isUpdatingProfile = action.payload;
+    },
+
+    setOnlineUsers: (state, action) => {
+      state.onlineUsers = action.payload;
+    },
+
+    setSocket: (state, action) => {
+      state.socket = action.payload;
+    },
+  },
+});
+
+export const {
+  setAuthUser,
+  setCheckingAuth,
+  setSigningUp,
+  setLoggingIn,
+  setUpdatingProfile,
+  setOnlineUsers,
+  setSocket,
+} = authSlice.actions;
+
+export default authSlice.reducer;
