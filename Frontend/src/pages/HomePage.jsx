@@ -1,22 +1,24 @@
-import {useSelector} from 'react-redux'
-import Sidebar from '../components/Sidebar.jsx'
-import NoChatSelected from '../components/NoChatSelected.jsx'
-import ChatComponent from '../components/ChatComponent.jsx'
+import Sidebar from "../components/Sidebar";
+import NoChatSelected from "../components/NoChatSelected";
+import ChatComponent from "../components/ChatComponent";
+import { useSelector } from "react-redux";
 
-export default function HomePage(){
+export default function HomePage() {
+  const { selectedUser } = useSelector((state) => state.chat);
 
-    const selectedUser=useSelector((state)=> state.chat)
-    return(
-        <div className='h-screen bg-base-200'>
-            <div className='flex items-center justify-center pt-20 px-4'>
-                <div className='bg-base-100 rounded-lg shadow-cl w-full max-w-6xl h-[calc(1000vh-8rem)]'>
-                    <div className="flex h-full rounded-lg overflow-hidden">
-                        <Sidebar />
+  return (
+    <div className="h-screen pt-16">
+      <div className="bg-base-100 h-[calc(100vh-4rem)] rounded-lg shadow-xl">
+        <div className="flex h-full rounded-lg overflow-hidden">
+          <Sidebar />
 
-                        {!selectedUser ? <NoChatSelected/> : <ChatComponent/>}
-                    </div>
-                </div>
-            </div>
+          {selectedUser ? (
+            <ChatComponent />
+          ) : (
+            <NoChatSelected />
+          )}
         </div>
-    )
+      </div>
+    </div>
+  );
 }

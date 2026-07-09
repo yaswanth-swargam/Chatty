@@ -16,13 +16,14 @@ function App() {
   
 const dispatch = useDispatch();
 
-const {authUser,isCheckingAuth}=useSelector((state)=> state.auth)
+const {authUser,isCheckingAuth,onlineUsers}=useSelector((state)=> state.auth)
 const theme=useSelector((state)=>state.theme.theme)
   useEffect(()=>{
     dispatch(checkAuth())
   },[dispatch])
 
   console.log(authUser)
+  console.log(onlineUsers)
   useEffect(() => {
   document.documentElement.setAttribute("data-theme", theme);
 }, [theme]);

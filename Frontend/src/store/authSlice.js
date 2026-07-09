@@ -7,7 +7,6 @@ const initialState = {
   isUpdatingProfile: false,
   isCheckingAuth: true,
   onlineUsers: [],
-  socket: null,
 };
 
 const authSlice = createSlice({
@@ -37,10 +36,6 @@ const authSlice = createSlice({
     setOnlineUsers: (state, action) => {
       state.onlineUsers = action.payload;
     },
-
-    setSocket: (state, action) => {
-      state.socket = action.payload;
-    },
   },
 });
 
@@ -51,7 +46,6 @@ export const {
   setLoggingIn,
   setUpdatingProfile,
   setOnlineUsers,
-  setSocket,
 } = authSlice.actions;
 
 export default authSlice.reducer;
